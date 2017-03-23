@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+@{
+    var ajaxOption = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "div1",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "waitimage"
+    };
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("ShowDetails", "Ajax", ajaxOption))
+        {
+            <h1>Enter Product Code</h1>
+            <h2>
+                Product Code: @Html.TextBox("txtCode")<br />
+                <input type="submit" value="Show Details" />
+                <input type="reset" value="Clear" />
+            </h2>
+        }
+    </div>
+    <div id="div1">
+    </div>
+</body>
+</html>
